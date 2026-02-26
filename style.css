@@ -1,0 +1,49 @@
+body {
+    background-color: #222;
+    display: flex;
+}
+
+#middle {
+    margin: 200px auto;
+    width: 400px;
+    height: 400px;
+    color: #222;
+    font-size: 200px;
+    background-color: #CCC;
+    border-radius: 32px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    cursor: pointer;
+}
+
+#menu {
+    /* flex: */
+    background-color: #2d2830;
+    color: #CCC;
+    width: 256px;
+    height: 100vh;
+}
+
+.lang-box {
+    padding-left: 4px;
+}
+
+.lang-button {
+    background-color: #CCC;
+    color:#222;
+    margin: 8px;
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.lang-button:hover {
+    background-color: #EEE;
+}
+
+.active-lang {
+    background-color: #bae0ff;
+}
+.active-lang:hover {
+    background-color: #a1d5ff;
+}
