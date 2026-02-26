@@ -19,30 +19,14 @@
 
   <script>
 
-    function randomLetter() {
-
-      range = Math.floor(Math.random() * (hiraganaList.length + 1));
-      activeLetter = Math.floor(Math.random() * (range));
-
-
-      document.getElementById("middle").innerHTML = hiraganaList[activeLetter][1];
-      state = "romaji";
-    }
-
-    function stepLetter() {
-      if (state == "romaji") {
-        document.getElementById("middle").innerHTML = hiraganaList[activeLetter][0];
-        state = "hiragana"
-      } else {
-        tmp = hiraganaList[activeLetter];
-        hiraganaList.splice(activeLetter, 1);
-        hiraganaList.push(tmp);
-        randomLetter();
-      }
-    }
+    var activePractice;
 
     function startVocab(vocab) {
       let vocabs = japanese.find(vocab);
+
+      activePractice = new Practice();
+      activePractice.start(vocabs);
+      $("#middle").html(activePractice.get());
 
       $(".active-lang").removeClass("active-lang");
 
@@ -53,9 +37,8 @@
 
     addEventListener("keypress", (e) => {
 
-      if (e.keyCode == 32) {
-        stepLetter();
-      }
+      activePractice.step();
+      $("#middle").html(activePractice.get());
     })
 
     function init() {

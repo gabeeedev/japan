@@ -1,3 +1,16 @@
+function rand(min, max) {
+    return min + Math.floor(Math.random() * (max-min));
+}
+
+function shuffleArray(array) {
+    for (var i = array.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+}
+
 class Task {
     constructor(question, solution) {
         this.question = question;
@@ -12,7 +25,7 @@ class Letter {
     }
 
     generate() {
-        return new Task(this.romaji, this.char);
+        return new Task(this.romaji, [this.char]);
     }
 }
 
@@ -34,27 +47,29 @@ class Word {
 // }
 
 class Vocab {
-    constructor(name, lists) {
+    constructor(name, words = [], subs = []) {
         this.name = name;
-        this.lists = lists;
-        this.link = name;
+        this.words = words;
+        this.subs = subs;
+        this.link = name.replaceAll(" ", "-");
 
-        for (const v of this.lists) {
-            if(v instanceof Vocab) {
-                v.link = this.link + "_" + v.link;
-            }
+        
+    }
+
+    chainLink(link) {
+        this.link = link + "_" + this.link;
+        for (const v of this.subs) {
+            v.chainLink(this.link);
         }
     }
 
     display() {
         console.log("asd");
         let sub = "";
-        for (const v of this.lists) {
-            if(v instanceof Vocab) {
-                sub += v.display();
-            }
+        for (const v of this.subs) {
+            sub += v.display();
         }
-        
+
         return `<div class="lang-box">
         <div class="lang-button" onClick=startVocab("${this.link}") id="${this.link}">
         ${this.name}
@@ -66,10 +81,8 @@ class Vocab {
     getVocabs() {
         let t = [];
         t.push(this);
-        for (const v of this.lists) {
-            if(v instanceof Vocab) {
-                t = t.concat(v.getVocabs());
-            }
+        for (const v of this.subs) {
+            t = t.concat(v.getVocabs());
         }
         return t;
     }
@@ -78,22 +91,55 @@ class Vocab {
 
         console.log(vocabLink);
 
-        if(!vocabLink.startsWith(this.link)) {
+        if (!vocabLink.startsWith(this.link)) {
             return false;
         }
 
-        if(vocabLink == this.link) {
+        if (vocabLink == this.link) {
             console.log("All below: " + this.name);
             return this.getVocabs();
-        } 
+        }
 
-        for (const v of this.lists) {
-            if(v instanceof Vocab) {
-                let ret = v.find(vocabLink)
-                if(ret !== false) {
-                    return ret;
-                }
+        for (const v of this.subs) {
+            let ret = v.find(vocabLink)
+            if (ret !== false) {
+                return ret;
             }
         }
     }
+}
+
+class Practice {
+    start(vocabList) {
+        this.wordList = [];
+        for (const vocab of vocabList) {
+            for (const word of vocab.words) {
+                this.wordList.push(word);
+            }
+        }
+        shuffleArray(this.wordList);
+        console.log(this.wordList);
+        this.nextWord();
+    }
+
+    nextWord() {
+        const rlen = rand(0,this.wordList.length);
+        console.log(this.wordList.length);
+        this.activeWord = rand(0,rlen);
+        this.state = "question";
+        console.log(this.activeWord);
+        this.task = this.wordList[this.activeWord].generate();
+    }
+
+    get() {
+        return this.state == "question" ? this.task.question : this.task.solution;
+    }
+
+    step() {
+        if(this.state == "question") {
+            this.state = "solution";
+        } else {
+            this.nextWord();
+        }
+    }    
 }
