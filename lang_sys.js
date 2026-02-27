@@ -90,7 +90,6 @@ class Vocab {
     }
 
     display() {
-        console.log("asd");
         let sub = "";
         for (const v of this.subs) {
             sub += v.display();
@@ -150,6 +149,9 @@ class Practice {
     }
 
     nextWord() {
+        let last = this.wordList.shift();
+        console.log(last);
+        this.wordList.push(last);
         const rlen = rand(0,this.wordList.length);
         console.log(this.wordList.length);
         this.activeWord = rand(0,rlen);
