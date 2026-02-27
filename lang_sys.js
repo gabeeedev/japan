@@ -149,9 +149,13 @@ class Practice {
     }
 
     nextWord() {
-        let last = this.wordList.shift();
-        console.log(last);
-        this.wordList.push(last);
+        if(this.activeWord !== undefined) {
+            let last = this.wordList[this.activeWord];
+            this.wordList.splice(this.activeWord,1);
+            console.log(last);
+            this.wordList.push(last);
+            console.log(this.wordList);
+        }
         const rlen = rand(0,this.wordList.length);
         console.log(this.wordList.length);
         this.activeWord = rand(0,rlen);
