@@ -50,9 +50,27 @@ class Word {
     }
 }
 
-// class Expression {
-//     constructor
-// }
+class Expression {
+    constructor(exprEng, exprJap, vocabDict) {
+        this.exprEng = exprEng;
+        this.exprJap = exprJap;
+        this.vocabDict = vocabDict;
+    }
+
+    generate() {
+        repl = [];
+        this.expr.matchAll(/\{([^}]+)\}/g).toArray().forEach(x => repl.push(x));
+
+        gen = this.expr;
+        for (const v of repl) {
+            gen = gen.replace("{" + v + "}", this.vocabDict)
+        }
+    }
+
+    class() {
+        return "word";
+    }
+}
 
 class Vocab {
     constructor(name, words = [], subs = []) {
@@ -78,10 +96,11 @@ class Vocab {
             sub += v.display();
         }
 
-        return `<div class="lang-box">
+        return `
         <div class="lang-button" onClick=startVocab("${this.link}") id="${this.link}">
         ${this.name}
         </div>
+        <div class="lang-box">
         ${sub}
         </div>`
     }

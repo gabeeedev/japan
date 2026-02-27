@@ -73,11 +73,31 @@ hiragana = new Vocab("Hiragana", [
 ]);
 
 this_and_that = new Vocab("This and that", [
-    new Word("this", "kore", "これ")
+    new Word("this", "kore", "これ"),
+    new Word("that", "sore", "それ"),
+    new Word("that (far)", "are", "あれ"),
+    new Word("which", "dore", "どれ"),
+    new Word("this ...", "kono ...", "この ..."),
+    new Word("that ...", "sono ...", "その ..."),
+    new Word("that ... (far)", "ano ...", "あの ..."),
+    new Word("which ...", "dono ...", "どの ..."),
+])
+
+numbers_base = new Vocab("Base numbers", [
+    new Word("1", "ichi", "いち"),
+    new Word("2", "ni", "に"),
+    new Word("3", "san", "さん"),
+    new Word("4", "yon", "よん"),
+    new Word("5", "go", "ご"),
+    new Word("6", "roku", "ろく"),
+    new Word("7", "nana", "なな"),
+    new Word("8", "hachi", "はち"),
+    new Word("9", "kyuu", "きゅう"),
+    new Word("10", "juu", "じゅう"),
 ])
 
 japanese = new Vocab("Japanese", [], [
     new Vocab("Writing", [], [hiragana]),
-    new Vocab("Words", [], [this_and_that])
+    new Vocab("Words", [], [this_and_that, numbers_base])
 ]);
 japanese.chainLink("V");

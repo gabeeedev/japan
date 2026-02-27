@@ -44,7 +44,11 @@
       }
       content = activePractice.get();
       if(content instanceof Array) {
-        content = content.join("<br>");
+        t = "";
+        for (const v of content) {
+          t += `<div>${v}</div>`
+        }
+        content = t; //content.join("<br>");
       }
       $("#middle").html(content);
     }
