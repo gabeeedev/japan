@@ -5,16 +5,25 @@ body {
 
 #middle {
     margin: 200px auto;
-    width: 400px;
-    height: 400px;
     color: #222;
-    font-size: 200px;
     background-color: #CCC;
     border-radius: 32px;
     align-items: center;
     justify-content: center;
     display: flex;
     cursor: pointer;
+    height: 400px;
+}
+
+.letter {
+    width: 400px;
+    font-size: 200px;
+}
+
+.word {
+    min-width: 400px;
+    font-size: 100px;
+    padding:32px;
 }
 
 #menu {
@@ -31,12 +40,13 @@ body {
 
 .lang-button {
     background-color: #CCC;
-    color:#222;
+    color: #222;
     margin: 8px;
     padding: 8px;
     border-radius: 8px;
     cursor: pointer;
 }
+
 .lang-button:hover {
     background-color: #EEE;
 }
@@ -44,6 +54,7 @@ body {
 .active-lang {
     background-color: #bae0ff;
 }
+
 .active-lang:hover {
     background-color: #a1d5ff;
 }

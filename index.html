@@ -26,6 +26,8 @@
 
       activePractice = new Practice();
       activePractice.start(vocabs);
+      $("#middle").removeClass();
+      $("#middle").addClass(activePractice.getWord().class());
       $("#middle").html(activePractice.get());
 
       $(".active-lang").removeClass("active-lang");
@@ -35,10 +37,20 @@
       }
     }
 
-    addEventListener("keypress", (e) => {
+    function step() {
+      if(activePractice.step()) {
+        $("#middle").removeClass();
+        $("#middle").addClass(activePractice.getWord().class());
+      }
+      content = activePractice.get();
+      if(content instanceof Array) {
+        content = content.join("<br>");
+      }
+      $("#middle").html(content);
+    }
 
-      activePractice.step();
-      $("#middle").html(activePractice.get());
+    addEventListener("keypress", (e) => {
+      step();
     })
 
     function init() {
@@ -51,7 +63,7 @@
 <body onload="init()">
   <div id="menu">
   </div>
-  <div id="middle" onclick="stepLetter()">
+  <div id="middle" onclick="step()">
 
   </div>
 </body>

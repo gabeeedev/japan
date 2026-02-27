@@ -27,6 +27,10 @@ class Letter {
     generate() {
         return new Task(this.romaji, [this.char]);
     }
+
+    class() {
+        return "letter"
+    }
 }
 
 class Word {
@@ -39,6 +43,10 @@ class Word {
 
     generate() {
         return new Task(this.english, [this.romaji, this.hiragana]);
+    }
+
+    class() {
+        return "word"
     }
 }
 
@@ -135,11 +143,17 @@ class Practice {
         return this.state == "question" ? this.task.question : this.task.solution;
     }
 
+    getWord() {
+        return this.wordList[this.activeWord];
+    }
+
     step() {
         if(this.state == "question") {
             this.state = "solution";
+            return false;
         } else {
             this.nextWord();
+            return true;
         }
     }    
 }
