@@ -58,13 +58,42 @@ class Expression {
     }
 
     generate() {
-        repl = [];
-        this.expr.matchAll(/\{([^}]+)\}/g).toArray().forEach(x => repl.push(x));
 
-        gen = this.expr;
-        for (const v of repl) {
-            gen = gen.replace("{" + v + "}", this.vocabDict)
+        let genDict = {};
+
+        for (const k in this.vocabDict) {
+            let tVocab = this.vocabDict[k];
+            if(tVocab instanceof Vocab) {
+                genDict[k] = tVocab.words[rand(0,tVocab.words.length)].generate();
+            } else {
+                genDict[k] = tVocab.generate(); //single
+            }
         }
+
+        console.log(genDict);
+
+        // this.exprEng.matchAll(/\{([^}]+)\}/g).toArray().forEach(x => repl.push(x));
+
+        let question = this.exprEng;
+        let solution = [];
+        for (const k in genDict) {
+            console.log(k)
+            console.log(genDict);
+            console.log(genDict[k]);
+            question = question.replace("{" + k + "}", genDict[k].question);
+        }
+        let solutionLen = 0;
+        for (const k in genDict) {
+            solutionLen = Math.max(genDict[k].solution.length,solutionLen);
+        }
+
+        for (let i = 0; i < solutionLen; i++) {
+            solution[i] = this.exprJap;
+            for (const k in genDict) {
+                solution[i] = solution[i].replace("{" + k + "}", genDict[k].solution[Math.min(i,genDict[k].solution.length)]);
+            }       
+        }
+        return new Task(question, solution);
     }
 
     class() {
