@@ -108,8 +108,8 @@ mult_numbers = new Vocab("", [
 
 num_99 = new Vocab("10-99", [
     new Word("10", "juu", "じゅう"),
-    new Expression("{ten}{one}", "{ten}{one}", {"ten":new Word("1", "juu", "じゅう"), "one":numbers_base}),
-    new Expression("{tens}{one}", "{tens}{ten}{one}", {"tens": mult_numbers, "ten":new Word("1", "juu", "じゅう"), "one":numbers_base}),
+    new Expression("{ten}{one}", "{ten}{one}", { "ten": new Word("1", "juu", "じゅう"), "one": numbers_base }),
+    new Expression("{tens}{one}", "{tens}{ten}{one}", { "tens": mult_numbers, "ten": new Word("1", "juu", "じゅう"), "one": numbers_base }),
 ]);
 
 normal_100 = new Vocab("", [
@@ -128,9 +128,9 @@ spec_100 = new Vocab("", [
 
 num_999 = new Vocab("100-999", [
     new Word("100", "hyaku", "ひゃく"),
-    new Expression("{hund}{num}", "{hund}{num}", {"hund":new Word("1", "hyaku", "ひゃく"), "num":num_99}),
-    new Expression("{hunds}{num}", "{hunds}{hund}{num}", {"hunds": normal_100, "hund":new Word("100", "hyaku", "ひゃく"), "num":num_99}),
-    new Expression("{hunds}{num}", "{hunds}{num}", {"hunds": spec_100, "num":num_99}),
+    new Expression("{hund}{num}", "{hund}{num}", { "hund": new Word("1", "hyaku", "ひゃく"), "num": num_99 }),
+    new Expression("{hunds}{num}", "{hunds}{hund}{num}", { "hunds": normal_100, "hund": new Word("100", "hyaku", "ひゃく"), "num": num_99 }),
+    new Expression("{hunds}{num}", "{hunds}{num}", { "hunds": spec_100, "num": num_99 }),
 ]);
 
 normal_1000 = new Vocab("", [
@@ -149,23 +149,60 @@ spec_1000 = new Vocab("", [
 
 num_9999 = new Vocab("1000-9999", [
     new Word("1000", "sen", "せん"),
-    new Expression("{thousand}{num}", "{thousand}{num}", {"thousand":new Word("1", "sen", "せん"), "num":num_999}),
-    new Expression("{thousands}{num}", "{thousands}{thousand}{num}", {"thousands": normal_1000, "thousand":new Word("1", "sen", "せん"), "num":num_999}),
-    new Expression("{thousands}{num}", "{thousands}{num}", {"thousands": spec_1000, "num":num_999}),
+    new Expression("{thousand}{num}", "{thousand}{num}", { "thousand": new Word("1", "sen", "せん"), "num": num_999 }),
+    new Expression("{thousands}{num}", "{thousands}{thousand}{num}", { "thousands": normal_1000, "thousand": new Word("1", "sen", "せん"), "num": num_999 }),
+    new Expression("{thousands}{num}", "{thousands}{num}", { "thousands": spec_1000, "num": num_999 }),
 ]);
 
 num_99999 = new Vocab("10000-99999", [
     new Word("10000", "man", "まん"),
-    new Expression("{tenthousand}{num}", "{tenthousand}{num}", {"tenthousand":new Word("1", "ichiman", "いちまん"), "num":num_9999}),
-    new Expression("{tenthousands}{num}", "{tenthousands}{tenthousand}{num}", {"tenthousands": mult_numbers, "tenthousand":new Word("1", "man", "まん"), "num":num_9999}),
+    new Expression("{tenthousand}{num}", "{tenthousand}{num}", { "tenthousand": new Word("1", "ichiman", "いちまん"), "num": num_9999 }),
+    new Expression("{tenthousands}{num}", "{tenthousands}{tenthousand}{num}", { "tenthousands": mult_numbers, "tenthousand": new Word("1", "man", "まん"), "num": num_9999 }),
 ]);
 
 complex_numbers = new Vocab("Complex numbers", [], [num_99, num_999, num_9999, num_99999]);
 
 numbers = new Vocab("Numbers", [], [numbers_base, complex_numbers]);
 
+body_parts = new Vocab("Body parts", [], [
+    new Vocab("Common", [
+        new Word("head", "atama", "あたま"),
+        new Word("neck", "kubi", "くび"),
+        new Word("shoulder", "kata", "かた"),
+        new Word("arm", "ude", "うで"),
+        new Word("finger", "yubi", "ゆび"),
+        new Word("chest", "mune", "むね"),
+        new Word("back", "senaka", "せなか"),
+        new Word("stomach", "hara", "はら"),
+        new Word("leg/foot", "ashi", "あし"),
+        new Word("knee", "hiza", "ひざ"),
+        new Word("hair", "kaminoke", "かみのけ"),
+        new Word("eyes", "me", "め"),
+        new Word("ear", "mimi", "みみ"),
+        new Word("nose", "hana", "はな"),
+        new Word("mouth", "kuchi", "くち"),
+        new Word("teeth", "ha", "は"),
+    ], []),
+    new Vocab("Uncommon", [
+        new Word("throat", "nodo", "のど"),
+        new Word("elbow", "hiji", "ひじ"),
+        new Word("wrist", "tekubi", "てくび"),
+        new Word("breast", "nyuubou", "んゆうぼう"),
+        new Word("thigh", "hutomomo", "ふともも"),
+        new Word("hip", "shiri", "しり"),
+        new Word("ankle", "ashikubi", "あしくび"),
+    ], []),
+
+
+])
+
 japanese = new Vocab("Japanese", [], [
     new Vocab("Writing", [], [hiragana]),
-    new Vocab("Words", [], [this_and_that, numbers])
+    new Vocab("Words", [],
+        [
+            this_and_that,
+            numbers,
+            body_parts,
+        ])
 ]);
 japanese.chainLink("V");
