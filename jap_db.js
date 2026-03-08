@@ -165,7 +165,7 @@ complex_numbers = new Vocab("Complex numbers", [], [num_99, num_999, num_9999, n
 numbers = new Vocab("Numbers", [], [numbers_base, complex_numbers]);
 
 body_parts = new Vocab("Body parts", [], [
-    new Vocab("Common", [
+    new Vocab("Easy", [
         new Word("head", "atama", "あたま"),
         new Word("neck", "kubi", "くび"),
         new Word("shoulder", "kata", "かた"),
@@ -176,14 +176,14 @@ body_parts = new Vocab("Body parts", [], [
         new Word("stomach", "hara", "はら"),
         new Word("leg/foot", "ashi", "あし"),
         new Word("knee", "hiza", "ひざ"),
-        new Word("hair", "kaminoke", "かみのけ"),
+        new Word("hair", "kami(noke)", "かみ(のけ)"),
         new Word("eyes", "me", "め"),
         new Word("ear", "mimi", "みみ"),
         new Word("nose", "hana", "はな"),
         new Word("mouth", "kuchi", "くち"),
         new Word("teeth", "ha", "は"),
     ], []),
-    new Vocab("Uncommon", [
+    new Vocab("Medium", [
         new Word("throat", "nodo", "のど"),
         new Word("elbow", "hiji", "ひじ"),
         new Word("wrist", "tekubi", "てくび"),
@@ -191,10 +191,35 @@ body_parts = new Vocab("Body parts", [], [
         new Word("thigh", "hutomomo", "ふともも"),
         new Word("hip", "shiri", "しり"),
         new Word("ankle", "ashikubi", "あしくび"),
+        new Word("heel", "kakato", "かかと"),
+        new Word("heart", "shinzou", "しんぞう"),
+        new Word("lung", "hai", "はい"),
+        new Word("muscle", "kinniku", "きんにく"),
+        new Word("skin", "hada", "はだ"),
+        new Word("bone", "hone", "ほね"),
     ], []),
-
-
 ])
+
+verbs = new Vocab("Verbs", [], [
+    new Vocab("Easy", [
+        new Word("to be (animate)", "iru", "いる"),
+        new Word("to be (inanimate)", "aru", "ある"),
+        new Word("do", "suru", "する"),
+        new Word("come", "kuru", "くる"),
+        new Word("go", "iku", "いく"),
+        new Word("eat", "taberu", "たべる"),
+        new Word("drink", "nomu", "のむ"),
+        new Word("say", "iu", "いう"),
+        new Word("listen", "kiku", "きく"),
+        new Word("look", "miru", "みる"),
+        new Word("know", "shiru", "しる"),
+        new Word("read", "yomu", "よむ"),
+        new Word("write", "kaku", "かく"),
+        new Word("understand", "wakaru", "わかる"),
+        new Word("think", "omou", "おもう"),
+        new Word("use/operate", "tsukau", "つかう"),
+    ], []),
+]);
 
 japanese = new Vocab("Japanese", [], [
     new Vocab("Writing", [], [hiragana]),

@@ -33,6 +33,7 @@ body {
     color: #CCC;
     width: 320px;
     height: 100vh;
+    overflow-y:auto;
 }
 
 .lang-box {
