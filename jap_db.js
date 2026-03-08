@@ -223,11 +223,12 @@ verbs = new Vocab("Verbs", [], [
 
 japanese = new Vocab("Japanese", [], [
     new Vocab("Writing", [], [hiragana]),
+    numbers,
     new Vocab("Words", [],
         [
             this_and_that,
-            numbers,
             body_parts,
+            verbs,
         ])
 ]);
 japanese.chainLink("V");
