@@ -218,7 +218,28 @@ verbs = new Vocab("Verbs", [], [
         new Word("understand", "wakaru", "わかる"),
         new Word("think", "omou", "おもう"),
         new Word("use/operate", "tsukau", "つかう"),
+        new Word("buy", "kau", "かう"),
+        new Word("take", "toru", "とる"),
+        new Word("have/hold", "motsu", "もつ"),
+        new Word("begin", "hajimeru", "はじめる"),
+        new Word("end", "owaru", "おわる"),
+        new Word("make", "tsukuru", "つくる"),
+        new Word("walk", "aruku", "あるく"),
+        new Word("run", "hashiru", "はしる"),
+        new Word("move", "ugoku", "うごく"),
+        new Word("sit", "suwaru", "すわる"),
+        new Word("stand", "tatsu", "たつ"),
+        new Word("wear", "kiru", "きる"),
+        new Word("get up", "okiru", "おきる"),
+        new Word("work", "hataraku", "はたらく"),
+        new Word("search", "sagasu", "さがす"),
+        new Word("play", "asobu", "あそぶ"),
+        new Word("wait", "matsu", "まつ"),
+        new Word("learn/study", "manabu", "まなぶ"),
+        new Word("sleep", "yasumu", "やすむ"),
+        new Word("leave", "saru", "さる"),
     ], []),
+    // new Vocab("Medium")
 ]);
 
 japanese = new Vocab("Japanese", [], [
