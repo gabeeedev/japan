@@ -242,6 +242,70 @@ verbs = new Vocab("Verbs", [], [
     // new Vocab("Medium")
 ]);
 
+time_and_date = new Vocab("Time & date", [], [
+    new Vocab("Easy", [
+        new Word("today", "kyou", "きょう"),
+        new Word("tomorrow", "ashita", "あした"),
+        new Word("yesterday", "kinou", "きのう"),
+        new Word("day", "nichi/hi", "にち・ひ"),
+        new Word("week", "shuu", "しゅう"),
+        new Word("month", "getsu", "げつ"),
+        new Word("year", "toshi/nen", "とし・ねん"),
+        new Word("second", "byou", "びょう"),
+        new Word("minute", "fun", "ふん"),
+        new Word("hour", "jikan", "じかん"),
+        new Word("morning", "asa", "あさ"),
+        new Word("afternoon", "hiru", "ひる"),
+        new Word("night", "yoru", "よる"),
+        new Word("now", "ima", "いま"),
+        new Word("before", "mae", "まえ"),
+        new Word("later", "ato", "あと"),
+        new Word("a.m.", "gozen", "ごぜん"),
+        new Word("p.m.", "gogo", "ごご"),
+    ], []),
+    new Vocab("Medium", [
+        new Word("sunday", "nichiyoubi", "にちようび"),
+        new Word("monday", "getsuyoubi", "げつようび"),
+        new Word("tuesday", "kayoubi", "かようび"),
+        new Word("wednesday", "suiyoubi", "すいようび"),
+        new Word("thursday", "mokuyoubi", "もくようび"),
+        new Word("friday", "kinyoubi", "きにょうび"),
+        new Word("saturday", "doyoubi", "どようび"),
+        new Word("season", "kisetsu", "きせつ"),
+        new Word("spring", "haru", "はる"),
+        new Word("summer", "natsu", "なつ"),
+        new Word("fall", "aki", "あき"),
+        new Word("winter", "fuyu", "ふゆ"),
+    ], [])
+]);
+
+colors = new Vocab("Colors", [
+    new Word("black", "くろ", "kuro"),
+    new Word("white", "しろ", "shiro"),
+    new Word("green", "みどり", "midori"),
+    new Word("blue", "あお", "ao"),
+    new Word("red", "あか", "aka"),
+    new Word("yellow", "きいろ", "kiiro"),
+    new Word("purple", "むらさき", "murasaki"),
+    new Word("brown", "ちゃいろ", "chairo"),
+    new Word("grey", "はいろ", "hairo"),
+], []);
+
+directions = new Vocab("Directions", [
+    new Word("up","うえ", "ue"),
+    new Word("down","した", "shita"),
+    new Word("left","ひだり", "hidari"),
+    new Word("right","みぎ", "migi"),
+    new Word("front","まえ", "mae"),
+    new Word("behind","うしろ", "ushiro"),
+    new Word("inside","なか", "naka"),
+    new Word("outside","そと", "soto"),
+    new Word("north","きた", "kita"),
+    new Word("south","みなみ", "minami"),
+    new Word("east","ひがし", "higashi"),
+    new Word("west","にし", "nishi"),
+], []);
+
 japanese = new Vocab("Japanese", [], [
     new Vocab("Writing", [], [hiragana]),
     numbers,
@@ -250,6 +314,9 @@ japanese = new Vocab("Japanese", [], [
             this_and_that,
             body_parts,
             verbs,
+            time_and_date,
+            colors,
+            directions
         ])
 ]);
 japanese.chainLink("V");
